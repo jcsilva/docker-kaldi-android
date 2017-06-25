@@ -42,3 +42,6 @@ Run a container, mounting the Kaldi repository you just cloned to /opt/kaldi:
 In the above example, it was assumed the Kaldi repository was cloned to
 ``/home/test/kaldi``. If you cloned it to somewhere else, you must change it
 accordingly.
+
+When ``docker run`` finishes, all the compiled Android binaries will be located
+in ``/home/test/kaldi/src`` subdirectories.
