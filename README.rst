@@ -18,7 +18,9 @@ Build the image
 
 .. code-block:: bash
 
-  $ docker build -t kaldi-android-base:latest https://github.com/jcsilva/docker-kaldi-android`
+  $ git clone https://github.com/jcsilva/docker-kaldi-android
+  $ cd docker-kaldi-android
+  $ docker build -t kaldi-android-base:latest .
 
 
 How to use
@@ -28,14 +30,14 @@ First of all, clone Kaldi repository to somewhere in your machine.
 
 .. code-block:: bash
 
-  git clone https://github.com/kaldi-asr/kaldi
+  $ git clone https://github.com/kaldi-asr/kaldi
 
 
 Run a container, mounting the Kaldi repository you just cloned to /opt/kaldi:
 
 .. code-block:: bash
 
-  docker run -v /home/test/kaldi:/opt/kaldi kaldi-android-base:latest
+  $ docker run -v /home/test/kaldi:/opt/kaldi kaldi-android-base:latest
 
 In the above example, it was assumed the Kaldi repository was cloned to
 ``/home/test/kaldi``. If you cloned it to somewhere else, you must change it
