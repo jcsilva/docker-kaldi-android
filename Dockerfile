@@ -24,9 +24,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 ##### Install Android toolchain
 RUN cd ${WORKING_DIR} && \
     wget -q --output-document=android-ndk.zip https://dl.google.com/android/repository/android-ndk-r14b-linux-x86_64.zip && \
-	unzip android-ndk.zip && \
-	rm -f android-ndk.zip && \
-	mv android-ndk-r14b ${ANDROID_NDK_HOME}
+    unzip android-ndk.zip && \
+    rm -f android-ndk.zip && \
+    mv android-ndk-r14b ${ANDROID_NDK_HOME}
 
 RUN ${ANDROID_NDK_HOME}/build/tools/make_standalone_toolchain.py --arch arm --api 21 --stl=libc++ --install-dir ${ANDROID_TOOLCHAIN_PATH}
 
