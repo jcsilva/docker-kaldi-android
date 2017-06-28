@@ -6,7 +6,7 @@ ENV WORKING_DIR /opt
 
 ENV ANDROID_NDK_HOME ${WORKING_DIR}/android-ndk-linux
 ENV ANDROID_TOOLCHAIN_PATH /tmp/my-android-toolchain
-ENV PATH ${ANDROID_TOOLCHAIN_PATH}/bin:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}/platform-tools:${PATH}:${ANDROID_HOME}/tools:${PATH}
+ENV PATH ${ANDROID_TOOLCHAIN_PATH}/bin:${PATH}
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
