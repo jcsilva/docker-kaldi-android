@@ -1,20 +1,33 @@
-FROM snowdream/android-ndk:latest
+FROM ubuntu:16.04
 
-RUN apt-get update && apt-get install -y \
-    build-essential \
-    clang \
-    file \
-    gfortran && \
-    apt-get clean autoclean && \
-    apt-get autoremove -y
+RUN mkdir -p /opt/android-sdk-linux && mkdir -p ~/.android && touch ~/.android/repositories.cfg
 
 ENV WORKING_DIR /opt
 
-##### Install Android toolchain
+ENV ANDROID_NDK_HOME ${WORKING_DIR}/android-ndk-linux
 ENV ANDROID_TOOLCHAIN_PATH /tmp/my-android-toolchain
-ENV PATH ${ANDROID_TOOLCHAIN_PATH}/bin:${PATH}
+ENV PATH ${ANDROID_TOOLCHAIN_PATH}/bin:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}/platform-tools:${PATH}:${ANDROID_HOME}/tools:${PATH}
 
-# ANDROID_NDK_HOME is defined in snowdream/android-ndk
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
+    ca-certificates \
+    clang \
+    file \
+    gfortran \
+    git \
+    python \
+    unzip \
+    wget && \
+    apt-get clean autoclean && \
+    apt-get autoremove -y
+
+##### Install Android toolchain
+RUN cd ${WORKING_DIR} && \
+    wget -q --output-document=android-ndk.zip https://dl.google.com/android/repository/android-ndk-r14b-linux-x86_64.zip && \
+	unzip android-ndk.zip && \
+	rm -f android-ndk.zip && \
+	mv android-ndk-r14b ${ANDROID_NDK_HOME}
+
 RUN ${ANDROID_NDK_HOME}/build/tools/make_standalone_toolchain.py --arch arm --api 21 --stl=libc++ --install-dir ${ANDROID_TOOLCHAIN_PATH}
 
 ##### Download, compile and install OpenBlas

@@ -18,4 +18,4 @@ cd ../src
 CXX=clang++ ./configure --static --android-incdir=${ANDROID_TOOLCHAIN_PATH}/sysroot/usr/include/ --host=arm-linux-androideabi --openblas-root=${WORKING_DIR}/OpenBLAS/install
 make clean -j
 make depend -j
-make -j 4
+make
