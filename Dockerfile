@@ -34,7 +34,7 @@ RUN ${ANDROID_NDK_HOME}/build/tools/make_standalone_toolchain.py --arch arm --ap
 RUN cd ${WORKING_DIR} && \
     git clone https://github.com/xianyi/OpenBLAS && \
     cd OpenBLAS && \
-    make TARGET=ARMV7 HOSTCC=gcc CC=arm-linux-androideabi-gcc NO_SHARED=1 NOFORTRAN=1 NUM_THREADS=32 libs && \
+    make TARGET=ARMV7 HOSTCC=gcc CC=arm-linux-androideabi-gcc NO_SHARED=1 NOFORTRAN=1 USE_THREAD=0 NUM_THREADS=32 libs && \
     make install NO_SHARED=1 PREFIX=`pwd`/install
 
 ##### Download, compile and install CLAPACK
