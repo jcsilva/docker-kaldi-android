@@ -26,7 +26,7 @@ Get the image
 
   $ git clone https://github.com/jcsilva/docker-kaldi-android
   $ cd docker-kaldi-android
-  $ docker build -t docker-kaldi-android:latest .
+  $ docker build -t jcsilva/docker-kaldi-android:latest .
 
 
 How to use
@@ -43,7 +43,7 @@ Run a container, mounting the Kaldi repository you just cloned to /opt/kaldi:
 
 .. code-block:: bash
 
-  $ docker run -v /home/test/kaldi:/opt/kaldi docker-kaldi-android:latest
+  $ docker run -v /home/test/kaldi:/opt/kaldi jcsilva/docker-kaldi-android:latest
 
 In the above example, it was assumed the Kaldi repository was cloned to
 ``/home/test/kaldi``. If you cloned it to somewhere else, you must change it
