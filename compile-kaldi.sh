@@ -3,7 +3,7 @@
 cd ${WORKING_DIR}/kaldi/tools
 
 # tools directory --> we'll only compile OpenFST
-OPENFST_VERSION=$(grep -oP "OPENFST_VERSION *= *\K(.*)$" ${WORKING_DIR}/kaldi/tools/Makefile)
+OPENFST_VERSION=$(grep -oP "OPENFST_VERSION *\?= *\K(.*)$" ${WORKING_DIR}/kaldi/tools/Makefile)
 wget -T 10 -t 1 http://openfst.cs.nyu.edu/twiki/pub/FST/FstDownload/openfst-${OPENFST_VERSION}.tar.gz
 tar -zxvf openfst-${OPENFST_VERSION}.tar.gz
 cd openfst-${OPENFST_VERSION}/
